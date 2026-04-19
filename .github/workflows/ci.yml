@@ -40,6 +40,10 @@ jobs:
                             threads: 1
                 EOF   
 
+            - name: Debug secrets
+              run: echo "Account is ${{ secrets.SNOWFLAKE_ACCOUNT }}"
+              
+
             - name: Run dbt
               run: |
                 cd dbt_dataforge
