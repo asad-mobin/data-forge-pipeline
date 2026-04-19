@@ -24,7 +24,7 @@ jobs:
             - name: Create dbt profile
               run: |
                 mkdir -p ~/.dbt
-                cat <<EOL > ~/.dbt/profiles.yml
+                cat <<EOF > ~/.dbt/profiles.yml
                 dbt_dataforge:
                     target: dev
                     outputs:
@@ -49,12 +49,13 @@ jobs:
                 SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
                 
                     
-            - name: Debug secrets
-              run: echo "Account is ${{ secrets.SNOWFLAKE_ACCOUNT }}"
+            - name: Check profile
+              run: |
+                cat ~/.dbt/profiles.yml
               
 
             - name: Run dbt
               run: |
                 cd dbt_dataforge
-                dbt run
+                dbt run --profiles-dir ~/.dbt
 
