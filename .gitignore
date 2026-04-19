@@ -1,0 +1,15 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+*.log
+data/
+*.csv
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+.DS_Store
+airflow/logs/scheduler/latest
+
+
