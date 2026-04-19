@@ -25,20 +25,20 @@ jobs:
               run: |
                 mkdir -p ~/.dbt
                 cat <<EOL > ~/.dbt/profiles.yml
-            dbt_dataforge:
-                target: dev
-                outputs:
-                    dev:
-                        type: snowflake
-                        account: $SNOWFLAKE_ACCOUNT
-                        user: $SNOWFLAKE_USER
-                        password: $SNOWFLAKE_PASSWORD
-                        role: $SNOWFLAKE_ROLE
-                        database: $SNOWFLAKE_DATABASE
-                        warehouse: $SNOWFLAKE_WAREHOUSE
-                        schema: public
-                        threads: 1
-            EOF
+                dbt_dataforge:
+                    target: dev
+                    outputs:
+                        dev:
+                            type: snowflake
+                            account: $SNOWFLAKE_ACCOUNT
+                            user: $SNOWFLAKE_USER
+                            password: $SNOWFLAKE_PASSWORD
+                            role: $SNOWFLAKE_ROLE
+                            database: $SNOWFLAKE_DATABASE
+                            warehouse: $SNOWFLAKE_WAREHOUSE
+                            schema: public
+                            threads: 1
+                EOF
 
               env:
                 SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
