@@ -30,12 +30,12 @@ jobs:
                     outputs:
                         dev:
                             type: snowflake
-                            account: dummy_account
-                            user: dummy_user
-                            password: dummy_password
-                            role: dummy_role
-                            database: dummy_database
-                            warehouse: dummy_warehouse
+                            account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                            user: ${{ secrets.SNOWFLAKE_USER }}
+                            password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                            role: ${{ secrets.SNOWFLAKE_ROLE }}
+                            database: ${{ secrets.SNOWFLAKE_DATABASE }}
+                            warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
                             schema: public
                             threads: 1
                 EOF   
@@ -43,5 +43,5 @@ jobs:
             - name: Run dbt
               run: |
                 cd dbt_dataforge
-                dbt parse
+                dbt run
 
