@@ -43,5 +43,5 @@ jobs:
             - name: Run dbt
               run: |
                 cd dbt_dataforge
-                dbt compile
+                dbt parse
 
