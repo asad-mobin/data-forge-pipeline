@@ -24,22 +24,28 @@ jobs:
             - name: Create dbt profile
               run: |
                 mkdir -p ~/.dbt
-                cat <<EOF > ~/.dbt/profiles.yml
-                dbt_dataforge:
+                echo "dbt_dataforge:
                     target: dev
                     outputs:
                         dev:
                             type: snowflake
-                            account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-                            user: ${{ secrets.SNOWFLAKE_USER }}
-                            password: ${{ secrets.SNOWFLAKE_PASSWORD }}
-                            role: ${{ secrets.SNOWFLAKE_ROLE }}
-                            database: ${{ secrets.SNOWFLAKE_DATABASE }}
-                            warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+                            accounnt: SNOWFLAKE_ACCOUNT
+                            user: SNOWFLAKE_USER
+                            password: SNOWFLAKE_PASSWORD
+                            role: SNOWFLAKE_ROLE
+                            database: SNOWFLAKE_DATABASE
+                            warehouse: SNOWFLAKE_WAREHOUSE
                             schema: public
-                            threads: 1
-                EOF   
-
+                            threads: 1" > ~/.dbt/profiles.yml
+              env:
+                SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+                SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+                SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
+                SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+                
+                    
             - name: Debug secrets
               run: echo "Account is ${{ secrets.SNOWFLAKE_ACCOUNT }}"
               
